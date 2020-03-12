@@ -7,7 +7,7 @@ include 'header.php';
     <div class="top-right home">
         <a href="view.php?">View</a>
         <a href="index.php">Login</a>
-        <a href="signup.php">Register</a>
+        <a href="register.php">Register</a>
     </div>
     <div class="content">
         <div class="m-b-md">
@@ -40,12 +40,7 @@ include 'header.php';
 </body>
 </html>
 <?php
-if(session_id() == ''){
-    session_start();
-}
-//header("Content-Type: text/html; charset=utf8");
 if (isset($_POST['submit'])) {
-    include 'db.php';
     $_SESSION['name'] = $name = $_POST['name'];
     $password = $_POST['password'];
     if ($name && $password) {
