@@ -22,16 +22,14 @@ $userId = $_GET['userId'];
     <?php
     $sql = "select * from posts";
     $result = mysqli_query($db, $sql);
-    $_SESSION['name'] = $name = $_GET['name'];
-    $_SESSION['userId'] = $userId = $_GET['userId'];
     while ($row = mysqli_fetch_assoc($result)) {
-        echo "<br>Visitor Name：" . $row['name'];
+//        echo "<br>Visitor Name：" . $row['name'];
         echo "<br>Subject：" . $row['subject'];
         echo "<br>Content：" . nl2br($row['content']) . "<br>";
-        $_SESSION['no'] =  $row['no'];
-        if ($name == $row['name']) {
+        $_SESSION['id'] =  $row['id'];
+        if ($userId == $row['user_id']) {
             echo '
-		<a href=" edit.php?name=' . $name ."&userId=". $userId. '&no=' . $row['no'] .'">
+		<a href=" edit.php?name=' . $name ."&userId=". $userId. '&no=' . $row['id'] .'">
 		Edit message content</a>&nbsp|&nbsp<a href="delete.php">Delete the message</a><br>';
         }
         echo "Time：" . $row['time'] . "<br>";
