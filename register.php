@@ -48,6 +48,7 @@ include 'header.php';
 //header("Content-Type: text/html; charset=utf8");
 if (isset($_POST['submit'])) {
     $name = $_SESSION['name'] = $_POST['name'];
+    $userId = $_SESSION['userId'] = $_POST['userId'];
     $password = $_POST['password'];
     if ($name && $password) {
         $sql = "select * from users where name = '$name'";
@@ -63,7 +64,7 @@ if (isset($_POST['submit'])) {
                 echo '<div class="success">Sign up successfully ！</div>';
                 echo "
                     <script>
-                    setTimeout(function(){window.location.href='view.php?name=" . $name . "';},2000);
+                    setTimeout(function(){window.location.href='view.php?name=" . $name .$userId. "';},2000);
                     </script>";
             }
         } else {

@@ -12,6 +12,7 @@ $sqls = [
     'posts' => "create table posts(
         id integer auto_increment primary key,
         user_id integer(10) NOT NULL ,
+        subject varchar (20) NOT NULL ,
         content varchar(20),
         time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );

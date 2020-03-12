@@ -12,22 +12,26 @@ include 'header.php';
     <div class="content">
         <div class="m-b-md">
             <form name="login" action="index.php" method="post">
-                <p>Username : <input type=text name="name"></p>
-                <p>Password : <input type=password name="password"></p>
+                <p>Username : <input type=text name="name" value="lulu"></p>
+                <p>Password : <input type=password name="password" value="123456"></p>
                 <p><input type="submit" name="submit" value="Log in">
                     <style>
-                        input {padding:5px 15px; background:#ccc; border:0 none;
-                            cursor:pointer;
+                        input {
+                            padding: 5px 15px;
+                            background: #ccc;
+                            border: 0 none;
+                            cursor: pointer;
                             -webkit-border-radius: 5px;
-                            border-radius: 5px; }
+                            border-radius: 5px;
+                        }
                     </style>
                     <input type="reset" name="Reset" value="Reset">
                     <style>
                         input {
-                            padding:5px 15px;
-                            background:#FFCCCC;
-                            border:0 none;f
-                        cursor:pointer;
+                            padding: 5px 15px;
+                            background: #FFCCCC;
+                            border: 0 none;
+                            f cursor: pointer;
                             -webkit-border-radius: 5px;
                             border-radius: 5px;
                             font-family: 'Nunito', sans-serif;
@@ -47,11 +51,14 @@ if (isset($_POST['submit'])) {
         $sql = "select * from users where name = '$name' and password='$password'";
         $result = mysqli_query($db, $sql);
         $rows = mysqli_num_rows($result);
+        $result = mysqli_fetch_array($result);
+        $_SESSION['name'] = $userId = $result['id'];
+
         if ($rows) {
             echo '<div class="sucess">welcome！ </div>';
             echo "
             <script>
-            setTimeout(function(){window.location.href='view.php?name=" . $name . "';},1000);
+            setTimeout(function(){window.location.href='view.php?name=" . $name ."&userId=" . $userId. "';},1000);
             </script>";
             exit;
         } else {
@@ -65,7 +72,6 @@ if (isset($_POST['submit'])) {
 setTimeout(function(){window.location.href='index.php';},2000);
 </script>";
     }
-    mysqli_close();
 
 }
 

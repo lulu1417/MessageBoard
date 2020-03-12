@@ -2,6 +2,7 @@
 <?php
 include 'header.php';
 $name = $_GET['name'];
+$userId = $_GET['userId'];
 ?>
 <body>
 <div class="flex-center position-ref full-height">
@@ -10,11 +11,11 @@ $name = $_GET['name'];
         if (!$name) {
             echo '<a href="index.php">Log in</a>';
         } else {
-            echo "<a href='board.php?name=" . $name . "'>Write some messages</a>";
+            echo "<a href='board.php?name=" . $name ."&userId=". $userId. "'>Write some messages</a>";
             echo '<a href="index.php">Log out</a>';
         }?>
     </div>
-    
+
 
 </div>
 <div class="note full-height">
@@ -22,6 +23,7 @@ $name = $_GET['name'];
     $sql = "select * from posts";
     $result = mysqli_query($db, $sql);
     $_SESSION['name'] = $name = $_GET['name'];
+    $_SESSION['userId'] = $userId = $_GET['userId'];
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<br>Visitor Name：" . $row['name'];
         echo "<br>Subject：" . $row['subject'];
@@ -29,7 +31,7 @@ $name = $_GET['name'];
         $_SESSION['no'] =  $row['no'];
         if ($name == $row['name']) {
             echo '
-		<a href=" edit.php?name=' . $name . '&no=' . $row['no'] .'">
+		<a href=" edit.php?name=' . $name ."&userId=". $userId. '&no=' . $row['no'] .'">
 		Edit message content</a>&nbsp|&nbsp<a href="delete.php">Delete the message</a><br>';
         }
         echo "Time：" . $row['time'] . "<br>";
