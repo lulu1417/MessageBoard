@@ -14,7 +14,7 @@ $userId = $_GET['userId'];
     </div>
     <div class="content">
         <div class="m-b-md">
-            <form name="form1" action="board.php" method="post">
+            <form name="form1" action="addPosts.php" method="post">
                 <input type="hidden" name="name" value="<?=$name?>">
                 <input type="hidden" name="userId" value="<?=$userId?>">
                 <p><strong><?="Hi, " . $name?></strong>  ʕ•ᴥ•ʔ</p>
@@ -49,24 +49,27 @@ $userId = $_GET['userId'];
 </html>
 
 <?php
-
-if (isset($_POST['submit'])) {
-    echo '<div class="success">Added successfully ！</div>';
-    $name = $_POST['name'];
-    $subject = $_POST["subject"];
-    $content = $_POST["content"];
-    $sql = "INSERT posts(user_id, content, time) VALUES ('$userId', '$subject', '$content', now())";
-
-    if (!mysqli_query($db, $sql)) {
-        die(mysqli_error());
-    } else {
-        echo "
-                <script>
-                setTimeout(function(){window.location.href='view.php?name=" . $name ."&userId=" . $userId. "';},500);
-                </script>";
-
-    }
-} else {
-    echo '<div class="success">Click <strong>Send</strong> when you\'re done.</div>';
-}
-?>
+//
+//if (isset($_POST['submit'])) {
+//    echo '<div class="success">Added successfully ！</div>';
+//    $name = $_POST['name'];
+//    $userId = $_POST['userId'];
+//    $subject = $_POST["subject"];
+//    $content = $_POST["content"];
+//    var_dump($userId);
+//    die();
+//    $sql = "INSERT posts(user_id, content, time) VALUES ('$userId', '$subject', '$content', now())";
+//
+//    if (!mysqli_query($db, $sql)) {
+//        die(mysqli_error());
+//    } else {
+//        echo "
+//                <script>
+//                setTimeout(function(){window.location.href='view.php?name=" . $name ."&userId=" . $userId. "';},500);
+//                </script>";
+//
+//    }
+//} else {
+//    echo '<div class="success">Click <strong>Send</strong> when you\'re done.</div>';
+//}
+//?>
