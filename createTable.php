@@ -38,7 +38,7 @@ $sqls = [
    ];
 
 foreach ($sqls as $sql) {
-    var_dump(mysqli_query($db, $sql));
+    mysqli_query($db, $sql);
 }
 
 

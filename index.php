@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
     $_SESSION['name'] = $name = $_POST['name'];
     $password = $_POST['password'];
     if ($name && $password) {
-        $sql = "select * from user where username = '$name' and password='$password'";
+        $sql = "select * from users where name = '$name' and password='$password'";
         $result = mysqli_query($db, $sql);
         $rows = mysqli_num_rows($result);
         if ($rows) {
