@@ -67,7 +67,7 @@ if (isset($_POST['submit'])) {
         echo '<div class="warning">Incompleted form！ </div>';
         echo "
 <script>
-setTimeout(function(){window.location.href='login.php';},2000);
+setTimeout(function(){window.location.href='index.php';},2000);
 </script>";
     }
     mysqli_close();
