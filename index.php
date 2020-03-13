@@ -5,7 +5,7 @@ include 'header.php';
 <body>
 <div class="flex-center position-ref full-height">
     <div class="top-right home">
-        <a href="view.php?">View</a>
+        <a href='view.php'>All Posts</a>
         <a href="index.php">Login</a>
         <a href="register.php">Register</a>
     </div>

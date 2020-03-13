@@ -3,6 +3,7 @@
 include 'header.php';
 $name = $_SESSION['name'];
 $userId = $_SESSION['userId'];
+$postId = $_SESSION['postId'];
 ?>
 <body>
 <div class="flex-center position-ref full-height">
@@ -20,18 +21,17 @@ $userId = $_SESSION['userId'];
 </div>
 <div class="note full-height">
     <?php
-    $sql = 'SELECT posts.*, users.*
+    $sql = "SELECT posts.id as post_id, posts.* , users.*
 FROM users
     LEFT JOIN posts 
          ON posts.user_id = users.id 
-   WHERE posts.user_id = 1 ORDER BY posts.id DESC';
+   WHERE posts.user_id = '$postId' ORDER BY posts.id DESC";
     $result = mysqli_query($db, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<br>Author：" . $row['name'];
         echo "<br>Subject：" . $row['subject'];
         echo "<br>Content：" . nl2br($row['content']) . "<br>";
-        $postId = $_SESSION['postId'] = $row['id'];
-
+        $postId = $_SESSION['postId'] = $row['post_id'];
         echo '
         <form name="form1" action="like.php" method="post">
         <input type="hidden" name="postId" value= ' . $postId . ' >
@@ -65,17 +65,9 @@ FROM users
                         }
                     </style>
             </form>
-        
         <a href="allComments.php?postId=' . $postId.'">All Comments</a><br>
         ';
-        if ($_SESSION['userId'] == $row['user_id']) {
-//            echo '
-//		<a href="edit.php?name=' . $_SESSION['name'] ."&userId=". $_SESSION['userId']. '&no=' . $row['id'] .'">
-//		<a href="edit.php">Edit message content</a>
-//		&nbsp|&nbsp
-//		<a href="delete.php">Delete the message</a><br>'
-            ;
-        }
+
         echo "Time：" . $row['time'] . "<br>";
         echo "<hr>";
 

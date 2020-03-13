@@ -22,16 +22,16 @@ $postId = $_GET["postId"];
 
 <div class="note full-height">
     <?php
-    $sql = 'SELECT users.*, messages.*
+    $sql = "SELECT users.*, messages.*
 FROM users
     LEFT JOIN messages 
          ON messages.user_id = users.id 
-   WHERE messages.user_id = 1 ORDER BY messages.id DESC';
+   WHERE messages.post_id = '$postId' ORDER BY messages.id DESC";
+
     $result = mysqli_query($db, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<br>Visitor Name：" . $row['name'];
         echo "<br>Content：" . nl2br($row['content']) . "<br>";
-
         echo "Time：" . $row['time'] . "<br>";
         echo "<hr>";
 
