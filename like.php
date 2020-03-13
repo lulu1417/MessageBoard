@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
     $name = $_SESSION['name'];
     $userId = $_SESSION['userId'];
 
-    echo '<div class="success">You liked number '.$postId.' post！ <br> Who also liked the post : </div>';
+    echo '<div class="success">Who also liked the post : </div>';
 
 
 

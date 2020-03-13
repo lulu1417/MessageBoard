@@ -13,7 +13,7 @@ $sqls = [
         id integer auto_increment primary key,
         user_id integer(10) NOT NULL ,
         subject varchar (20) NOT NULL ,
-        content varchar(20),
+        content varchar(1000),
         time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
     ",
@@ -22,7 +22,7 @@ $sqls = [
         id integer auto_increment primary key,
         user_id integer(10) NOT NULL ,
         post_id integer(10) NOT NULL ,
-        content varchar(20),
+        content varchar(300),
         time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
     ",
@@ -31,7 +31,7 @@ $sqls = [
         id integer auto_increment primary key,
         user_id integer(10) NOT NULL ,
         comment_id integer(10) NOT NULL ,
-        content varchar(20),
+        content varchar(300),
         time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
     ",
