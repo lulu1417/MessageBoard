@@ -2,7 +2,6 @@
 include 'header.php';
 $postId = $_POST["postId"];
 if (isset($_POST['submit'])) {
-    echo '<div class="success">Comment send successfully ！</div>';
     $name = $_POST['name'];
     $userId = $_POST['userId'];
     $content = $_POST["content"];
@@ -13,7 +12,7 @@ if (isset($_POST['submit'])) {
     } else {
         echo "
                 <script>
-                 setTimeout(function(){window.location.href='allComments.php?postId=" . $postId. "';},800);
+                 setTimeout(function(){window.location.href='allComments.php?postId=" . $postId. "';},300);
                 </script>";
 
     }

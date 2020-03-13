@@ -12,11 +12,10 @@ if (isset($_POST['submit'])) {
     if (!mysqli_query($db, $sql)) {
         die(mysqli_error());
     } else {
-        echo '<div class="success">Reply send successfully ！</div>';
         echo "
 
                 <script>
-                 setTimeout(function(){window.location.href='allReplies.php?commentId=" . $commentId. ".&postId=".$postId.";'},800);
+                 setTimeout(function(){window.location.href='allReplies.php?commentId=" . $commentId. ".&postId=".$postId.";'},300);
                 </script>";
 
     }
