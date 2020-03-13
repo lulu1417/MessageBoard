@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
     } else {
         echo "
                 <script>
-                setTimeout(function(){window.location.href='view.php?name=" . $name ."&userId=" . $userId. "';},10);
+                setTimeout(function(){window.location.href='view.php';},10);
                 </script>";
 
     }

@@ -45,20 +45,21 @@ include 'header.php';
 </html>
 <?php
 if (isset($_POST['submit'])) {
-    $_SESSION['name'] = $name = $_POST['name'];
+    $name = $_SESSION['name'] = $_POST['name'];
     $password = $_POST['password'];
     if ($name && $password) {
         $sql = "select * from users where name = '$name' and password='$password'";
         $result = mysqli_query($db, $sql);
         $rows = mysqli_num_rows($result);
         $result = mysqli_fetch_array($result);
-        $_SESSION['name'] = $userId = $result['id'];
+        $userId = $_SESSION['userId'] = $result['id'];
 
         if ($rows) {
             echo '<div class="sucess">welcome！ </div>';
             echo "
             <script>
-            setTimeout(function(){window.location.href='view.php?name=" . $name ."&userId=" . $userId. "';},1000);
+//            setTimeout(function(){window.location.href='view.php?name=" . $name ."&userId=" . $userId. "';},1000);
+             setTimeout(function(){window.location.href='view.php';},1000);
             </script>";
             exit;
         } else {

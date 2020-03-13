@@ -1,8 +1,9 @@
 <title>Board</title>
 <?php
 include 'header.php';
-$name = $_GET['name'];
-$userId = $_GET['userId'];
+$name = $_SESSION['name'];
+$userId = $_SESSION['userId'];
+
 ?>
 
 <body>
@@ -10,7 +11,7 @@ $userId = $_GET['userId'];
     <div class="top-right home">
         <a href='view.php?name=<?=$name?>'>View</a>
         <a href="index.php">Logout</a>
-        <a href="signup.php">Register</a>
+        <a href="register.php">Register</a>
     </div>
     <div class="content">
         <div class="m-b-md">

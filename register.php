@@ -45,7 +45,6 @@ include 'header.php';
 </html>
 <?php
 
-//header("Content-Type: text/html; charset=utf8");
 if (isset($_POST['submit'])) {
     $name = $_SESSION['name'] = $_POST['name'];
     $userId = $_SESSION['userId'] = $_POST['userId'];

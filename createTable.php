@@ -31,7 +31,6 @@ $sqls = [
         id integer auto_increment primary key,
         user_id integer(10) NOT NULL ,
         post_id integer(10) NOT NULL ,
-        number integer(10) NOT NULL ,
         time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
     ",
@@ -39,7 +38,7 @@ $sqls = [
    ];
 
 foreach ($sqls as $sql) {
-    mysqli_query($db, $sql);
+    var_dump(mysqli_query($db, $sql));
 }
 
 
