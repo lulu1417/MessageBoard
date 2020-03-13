@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
     } else {
         echo "
                 <script>
-                setTimeout(function(){window.location.href='view.php';},500);
+                 setTimeout(function(){window.location.href='allComments.php?postId=" . $postId. "';},800);
                 </script>";
 
     }

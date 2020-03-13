@@ -11,7 +11,7 @@ $userId = $_SESSION['userId'];
         if (!$_SESSION['name']) {
             echo '<a href="index.php">Log in</a>';
         } else {
-            echo "<a href='board.php'>Write some messages</a>";
+            echo "<a href='board.php'>Add post</a>";
             echo '<a href="index.php">Log out</a>';
         } ?>
     </div>
@@ -20,10 +20,14 @@ $userId = $_SESSION['userId'];
 </div>
 <div class="note full-height">
     <?php
-    $sql = "select * from posts ORDER BY id DESC";
+    $sql = 'SELECT posts.*, users.*
+FROM users
+    LEFT JOIN posts 
+         ON posts.user_id = users.id 
+   WHERE posts.user_id = 1 ORDER BY posts.id DESC';
     $result = mysqli_query($db, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
-//        echo "<br>Visitor Name：" . $row['name'];
+        echo "<br>Author：" . $row['name'];
         echo "<br>Subject：" . $row['subject'];
         echo "<br>Content：" . nl2br($row['content']) . "<br>";
         $postId = $_SESSION['postId'] = $row['id'];
@@ -43,7 +47,7 @@ $userId = $_SESSION['userId'];
                 <p><textarea style="font-family: \'Nunito\', sans-serif; font-size:20px; width:550px;height:100px;" name="content"></textarea></p>
                 <p><input type="submit" name="submit" value="SEND">
                     <style>
-                        input {padding:5px 15px; background:#FFCCCC; border:0 none;
+                        input {padding:5px 15px; border:0 none;
                             cursor:pointer;
                             -webkit-border-radius: 5px;
                             border-radius: 5px; }
@@ -51,7 +55,7 @@ $userId = $_SESSION['userId'];
                     <style>
                         input {
                             padding:5px 15px;
-                            background:#FFCCCC;
+                            background:#CCEEFF;
                             border:0 none;f
                         cursor:pointer;
                             -webkit-border-radius: 5px;
