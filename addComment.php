@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
 if (isset($_POST['submit'])) {
-//    echo '<div class="success">Added successfully ！</div>';
+    echo '<div class="success">Comment send successfully ！</div>';
     $name = $_POST['name'];
     $userId = $_POST['userId'];
     $content = $_POST["content"];
@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
     } else {
         echo "
                 <script>
-                setTimeout(function(){window.location.href='view.php';},10);
+                setTimeout(function(){window.location.href='view.php';},500);
                 </script>";
 
     }

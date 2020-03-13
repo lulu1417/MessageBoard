@@ -20,7 +20,7 @@ $userId = $_SESSION['userId'];
 </div>
 <div class="note full-height">
     <?php
-    $sql = "select * from posts";
+    $sql = "select * from posts ORDER BY id DESC";
     $result = mysqli_query($db, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
 //        echo "<br>Visitor Name：" . $row['name'];
@@ -34,10 +34,35 @@ $userId = $_SESSION['userId'];
         <input type="submit" name="submit" value= 👍 >
         </form>
         <form name="form1" action="comment.php" method="post">
-        <input type="hidden" name="postId" value= ' . $postId . ' >
-        <input type="submit" name="submit" value= 📝 >
+
         </form>
-        <a href="allComments.php">All Comments</a><br>
+         <form name="form1" action="addComment.php" method="post">
+                <input type="hidden" name="postId" value= ' . $postId . ' >
+                     <input type="hidden" name="name" value= ' . $name . '>
+                <input type="hidden" name="userId" value= ' . $userId . '>
+                <p><textarea style="font-family: \'Nunito\', sans-serif; font-size:20px; width:550px;height:100px;" name="content"></textarea></p>
+                <p><input type="submit" name="submit" value="SEND">
+                    <style>
+                        input {padding:5px 15px; background:#FFCCCC; border:0 none;
+                            cursor:pointer;
+                            -webkit-border-radius: 5px;
+                            border-radius: 5px; }
+                    </style>
+                    <style>
+                        input {
+                            padding:5px 15px;
+                            background:#FFCCCC;
+                            border:0 none;f
+                        cursor:pointer;
+                            -webkit-border-radius: 5px;
+                            border-radius: 5px;
+                            font-family: \'Nunito\', sans-serif;
+                            font-size: 19px;
+                        }
+                    </style>
+            </form>
+        
+        <a href="allComments.php?postId=' . $postId.'">All Comments</a><br>
         ';
         if ($_SESSION['userId'] == $row['user_id']) {
 //            echo '
