@@ -3,7 +3,7 @@
 include 'header.php';
 $name = $_SESSION['name'];
 $userId = $_SESSION['userId'];
-$commentId = $_GET["commentId"];
+$postId = $_GET['postId'];
 ?>
 <body>
 <div class="flex-center position-ref full-height">
@@ -22,11 +22,12 @@ $commentId = $_GET["commentId"];
 
 <div class="note full-height">
     <?php
-    $sql = "SELECT users.*, messages.*
+    $sql = "SELECT comments.id as comment_id, users.*, comments.*
 FROM users
-    LEFT JOIN messages 
-         ON messages.user_id = users.id 
-   WHERE messages.post_id = '$postId' ORDER BY messages.id DESC";
+    LEFT JOIN comments
+         ON comments.user_id = users.id 
+   WHERE comments.post_id = '$postId' ORDER BY comments.id DESC";
+
 
     $result = mysqli_query($db, $sql);
 
@@ -34,13 +35,15 @@ FROM users
         echo "<br>Visitor Name：" . $row['name'];
         echo "<br>Content：" . nl2br($row['content']) . "<br>";
         echo "Time：" . $row['time'] . "<br>";
+        $commentId = $_SESSION['commentId'] = $row['comment_id'];
         echo '
-         <form name="form1" action="addComment.php" method="post">
+         <form name="form1" action="addReply.php" method="post">
                 <input type="hidden" name="commentId" value= ' . $commentId . ' >
+                <input type="hidden" name="postId" value= ' . $postId . ' >
                      <input type="hidden" name="name" value= ' . $name . '>
                 <input type="hidden" name="userId" value= ' . $userId . '>
                 <p><textarea style="font-family: \'Nunito\', sans-serif; font-size:20px; width:550px;height:100px;" name="content"></textarea></p>
-                <p><input type="submit" name="submit" value="SEND">
+                <p><input type="submit" name="submit" value="REPLY">
                     <style>
                         input {padding:5px 15px; border:0 none;
                             cursor:pointer;
@@ -60,7 +63,7 @@ FROM users
                         }
                     </style>
             </form>
-        <a href="allComments.php?postId=' . $postId.'">All Comments</a><br>
+        <a href="allReplies.php?commentId=' . $commentId.'&postId='.$postId.'">All Replies</a><br>
         ';
         echo "<hr>";
 

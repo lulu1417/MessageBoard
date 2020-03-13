@@ -18,7 +18,7 @@ $sqls = [
         );
     ",
 
-    'messages' => "create table messages(
+    'comments' => "create table comments(
         id integer auto_increment primary key,
         user_id integer(10) NOT NULL ,
         post_id integer(10) NOT NULL ,
@@ -30,7 +30,8 @@ $sqls = [
     'replies' => "create table replies(
         id integer auto_increment primary key,
         user_id integer(10) NOT NULL ,
-        message_id integer(10) NOT NULL ,
+        comment_id integer(10) NOT NULL ,
+        content varchar(20),
         time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
     ",
