@@ -23,9 +23,9 @@ $postId = $_SESSION['postId'];
     <?php
     $sql = "SELECT posts.id as post_id, posts.* , users.*
 FROM users
-    LEFT JOIN posts 
+    RIGHT JOIN posts 
          ON posts.user_id = users.id 
-   WHERE posts.user_id = '$postId' ORDER BY posts.id DESC";
+   ORDER BY posts.id DESC";
     $result = mysqli_query($db, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<br>Author：" . $row['name'];
