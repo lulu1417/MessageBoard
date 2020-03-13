@@ -3,7 +3,7 @@
 include 'header.php';
 $name = $_SESSION['name'];
 $userId = $_SESSION['userId'];
-$postId = $_GET["postId"];
+$commentId = $_GET["commentId"];
 ?>
 <body>
 <div class="flex-center position-ref full-height">
@@ -34,6 +34,34 @@ FROM users
         echo "<br>Visitor Name：" . $row['name'];
         echo "<br>Content：" . nl2br($row['content']) . "<br>";
         echo "Time：" . $row['time'] . "<br>";
+        echo '
+         <form name="form1" action="addComment.php" method="post">
+                <input type="hidden" name="commentId" value= ' . $commentId . ' >
+                     <input type="hidden" name="name" value= ' . $name . '>
+                <input type="hidden" name="userId" value= ' . $userId . '>
+                <p><textarea style="font-family: \'Nunito\', sans-serif; font-size:20px; width:550px;height:100px;" name="content"></textarea></p>
+                <p><input type="submit" name="submit" value="SEND">
+                    <style>
+                        input {padding:5px 15px; border:0 none;
+                            cursor:pointer;
+                            -webkit-border-radius: 5px;
+                            border-radius: 5px; }
+                    </style>
+                    <style>
+                        input {
+                            padding:5px 15px;
+                            background:#CCEEFF;
+                            border:0 none;f
+                        cursor:pointer;
+                            -webkit-border-radius: 5px;
+                            border-radius: 5px;
+                            font-family: \'Nunito\', sans-serif;
+                            font-size: 19px;
+                        }
+                    </style>
+            </form>
+        <a href="allComments.php?postId=' . $postId.'">All Comments</a><br>
+        ';
         echo "<hr>";
 
     }

@@ -3,7 +3,6 @@
 include 'header.php';
 $name = $_SESSION['name'];
 $userId = $_SESSION['userId'];
-$postId = $_SESSION['postId'];
 ?>
 <body>
 <div class="flex-center position-ref full-height">

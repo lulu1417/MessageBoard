@@ -27,6 +27,14 @@ $sqls = [
         );
     ",
 
+    'replies' => "create table replies(
+        id integer auto_increment primary key,
+        user_id integer(10) NOT NULL ,
+        message_id integer(10) NOT NULL ,
+        time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+    ",
+
     'likes' => "create table likes(
         id integer auto_increment primary key,
         user_id integer(10) NOT NULL ,

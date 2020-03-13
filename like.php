@@ -1,4 +1,4 @@
-<title>All Comments</title>
+<title>Who Like This Post</title>
 <?php
 include 'header.php';
 ?>
