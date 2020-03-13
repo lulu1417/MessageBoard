@@ -34,16 +34,16 @@ FROM users
 
 
     $result = mysqli_query($db, $sql);
-
-    if(!$result){
-        $sql = "INSERT likes(user_id, post_id) VALUES ('$userId', '$postId')";
+    $row = mysqli_fetch_assoc($result);
+    if($row == 0){
+        $sql = "INSERT likes(user_id, post_id, time) VALUES ('$userId', '$postId', now())";
     }
 
     if (!mysqli_query($db, $sql)) {
         die(mysqli_error());
     } else {
 
-        $sql = "SELECT likes.id as like_id, likes.*, users.*
+        $sql = "SELECT likes.id as like_id, likes.time as like_time, likes.*, users.*
 FROM users
     LEFT JOIN likes
          ON likes.user_id = users.id 
@@ -54,7 +54,7 @@ FROM users
 
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<br>Visitor Name：" . $row['name']. "<br>";
-            echo "Time：" . $row['time'] . "<br>";
+            echo "Time：" . $row['like_time'] . "<br>";
             echo "<hr>";
 
             if($userId == $row['id']){
