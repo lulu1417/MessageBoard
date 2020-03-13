@@ -1,5 +1,5 @@
 # Message Board
-一個具有會員系統、發表留言、回覆留言和按讚功能的留言板
+一個可具名發表留言、回覆留言和按讚功能的留言板
 ## Getting Started
 
 開啟server: 

@@ -16,6 +16,7 @@ include 'header.php';
 
 
 </div>
+<div class="note full-height">
 <?php
 if (isset($_POST['submit'])) {
     $postId = $_POST["postId"];
@@ -25,10 +26,18 @@ if (isset($_POST['submit'])) {
     echo '<div class="success">Who also liked the post : </div>';
 
 
+    $sql = "SELECT likes.id as like_id, likes.*, users.*
+FROM users
+    LEFT JOIN likes
+         ON likes.user_id = users.id 
+   WHERE likes.post_id = '$postId' AND likes.user_id = '$userId' ORDER BY likes.id DESC";
 
 
-    $sql = "INSERT likes(user_id, post_id) VALUES ('$userId', '$postId')";
+    $result = mysqli_query($db, $sql);
 
+    if(!$result){
+        $sql = "INSERT likes(user_id, post_id) VALUES ('$userId', '$postId')";
+    }
 
     if (!mysqli_query($db, $sql)) {
         die(mysqli_error());
@@ -84,3 +93,4 @@ FROM users
     die();
 }
 ?>
+</div>
