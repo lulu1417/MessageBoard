@@ -26,9 +26,14 @@ $userId = $_SESSION['userId'];
 //        echo "<br>Visitor Name：" . $row['name'];
         echo "<br>Subject：" . $row['subject'];
         echo "<br>Content：" . nl2br($row['content']) . "<br>";
-        $_SESSION['postId'] =  $row['id'];
-        echo ' <a href="like.php">👍</a> ';
-        echo ' &nbsp|&nbsp <a href="comment.php">Comment</a> ';
+        $postId = $_SESSION['postId'] =  $row['id'];
+
+        echo '
+        <form name="form1" action="like.php" method="post">
+        <input type="hidden" name="postId" value= '.$postId.' >
+        <input type="submit" name="submit" value= 👍 >
+        </form>
+        '.'<a href="comment.php">Comment</a> ';
         if ($_SESSION['userId'] == $row['user_id']) {
 //            echo '
 //		<a href="edit.php?name=' . $_SESSION['name'] ."&userId=". $_SESSION['userId']. '&no=' . $row['id'] .'">
@@ -37,6 +42,7 @@ $userId = $_SESSION['userId'];
 //		<a href="delete.php">Delete the message</a><br>'
             ;
         }
+        echo "<br>";
         echo "Time：" . $row['time'] . "<br>";
         echo "<hr>";
 
