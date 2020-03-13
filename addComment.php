@@ -8,9 +8,7 @@ if (isset($_POST['submit'])) {
     $content = $_POST["content"];
 
     $sql = "INSERT messages(user_id, post_id ,content) VALUES ('$userId', '$postId', '$content')";
-
     if (!mysqli_query($db, $sql)) {
-
         die(mysqli_error());
     } else {
         echo "

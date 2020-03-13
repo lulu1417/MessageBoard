@@ -47,23 +47,29 @@ include 'header.php';
 
 if (isset($_POST['submit'])) {
     $name = $_SESSION['name'] = $_POST['name'];
-    $userId = $_SESSION['userId'] = $_POST['userId'];
     $password = $_POST['password'];
     if ($name && $password) {
         $sql = "select * from users where name = '$name'";
         $result = mysqli_query($db, $sql);
         $rows = mysqli_num_rows($result);
+
         if (!$rows) {
-            $sql = "insert users(id,name,password) values (null,'$name','$password')";
-            mysqli_query($db, $sql);
+            $sql = "INSERT users(id,name,password) values (null,'$name','$password')";
+            $result = mysqli_query($db, $sql);
+            $sql = "select * from users where name = '$name'";
+            $result = mysqli_query($db, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
+                $userId = $_SESSION['userId'] = $row['id'];
+            }
 
             if (!$result) {
                 die('Error: ' . mysqli_error());
             } else {
+
                 echo '<div class="success">Sign up successfully ！</div>';
                 echo "
                     <script>
-                    setTimeout(function(){window.location.href='view.php?name=" . $name .$userId. "';},2000);
+                    setTimeout(function(){window.location.href='view.php';},2000);
                     </script>";
             }
         } else {

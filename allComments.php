@@ -12,7 +12,7 @@ $postId = $_GET["postId"];
         if (!$_SESSION['name']) {
             echo '<a href="index.php">Log in</a>';
         } else {
-            echo "<a href='view.php'>View</a>";
+            echo "<a href='view.php'>All post</a>";
             echo '<a href="index.php">Log out</a>';
         } ?>
     </div>
@@ -29,6 +29,7 @@ FROM users
    WHERE messages.post_id = '$postId' ORDER BY messages.id DESC";
 
     $result = mysqli_query($db, $sql);
+
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<br>Visitor Name：" . $row['name'];
         echo "<br>Content：" . nl2br($row['content']) . "<br>";
