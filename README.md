@@ -1,7 +1,12 @@
 # Message Board
 一個具有會員系統、發表留言、回覆留言和按讚功能的留言板
 ## Getting Started
-註冊 or 登入畫面，登入或註冊成功後會自動導向主畫面
+開啟server：
+```
+php -S localhost:8000
+```
+網址列輸入：http://localhost:8000
+就會進入註冊 or 登入畫面，登入或註冊成功後會自動導向主畫面
 ![](https://i.imgur.com/ZcIriUA.png)
 
 主畫面：顯示所有留言
