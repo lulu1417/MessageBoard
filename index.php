@@ -12,8 +12,8 @@ include 'header.php';
     <div class="content">
         <div class="m-b-md">
             <form name="login" action="index.php" method="post">
-                <p>Username : <input type=text name="name" value="lulu"></p>
-                <p>Password : <input type=password name="password" value="123456"></p>
+                <p>Username : <input type=text name="name" ></p>
+                <p>Password : <input type=password name="password" ></p>
                 <p><input type="submit" name="submit" value="Log in">
                     <style>
                         input {
@@ -58,7 +58,6 @@ if (isset($_POST['submit'])) {
             echo '<div class="sucess">welcome！ </div>';
             echo "
             <script>
-//            setTimeout(function(){window.location.href='view.php?name=" . $name ."&userId=" . $userId. "';},1000);
              setTimeout(function(){window.location.href='view.php';},1000);
             </script>";
             exit;

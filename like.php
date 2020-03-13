@@ -19,16 +19,22 @@ include 'header.php';
 <?php
 if (isset($_POST['submit'])) {
     $postId = $_POST["postId"];
-    echo '<div class="success">You liked number '.$postId.' post！ <br >Who also liked the post : </div>';
     $name = $_SESSION['name'];
     $userId = $_SESSION['userId'];
-    $postId = $_POST["postId"];
+
+    echo '<div class="success">You liked number '.$postId.' post！ <br> Who also liked the post : </div>';
+
+
+
+
     $sql = "INSERT likes(user_id, post_id) VALUES ('$userId', '$postId')";
+
+
     if (!mysqli_query($db, $sql)) {
         die(mysqli_error());
     } else {
 
-        $sql = "SELECT likes.*, users.*
+        $sql = "SELECT likes.id as like_id, likes.*, users.*
 FROM users
     LEFT JOIN likes
          ON likes.user_id = users.id 
@@ -41,6 +47,31 @@ FROM users
             echo "<br>Visitor Name：" . $row['name']. "<br>";
             echo "Time：" . $row['time'] . "<br>";
             echo "<hr>";
+
+            if($userId == $row['id']){
+                echo '
+        <form name="form1" action="dislike.php" method="post">
+        <input type="hidden" name="postId" value= ' . $postId . ' >
+        <input type="hidden" name="userId" value= ' . $userId . ' >
+        <input type="hidden" name="likeId" value= ' . $row['like_id'] . ' >
+         <input type="submit" name="submit" value= "Retrive like 👎" >
+           <style>
+                        input {
+                            padding:5px 15px;
+                            background:#CCEEFF;
+                            border:0 none;f
+                        cursor:pointer;
+                            -webkit-border-radius: 5px;
+                            border-radius: 5px;
+                            font-family: \'Nunito\', sans-serif;
+                            font-size: 19px;
+                        }
+                    </style>
+        </form>
+        
+        ';
+
+            }
 
         }
 
