@@ -1,6 +1,14 @@
 # Message Board
 一個具有會員系統、發表留言、回覆留言和按讚功能的留言板
 ## Getting Started
+參數設定：
+```
+cp env.example.php env.php
+```
+建置資料表：
+```
+php createTable.php
+```
 開啟server：
 ```
 php -S localhost:8000
