@@ -9,7 +9,7 @@ $userId = $_SESSION['userId'];
     <div class="top-right home">
         <?php
         if (!$_SESSION['name']) {
-            echo '<a href="index.php">Log in</a>';
+            echo '<a href="login.php">Log in</a>';
         } else {
             echo "<a href='board.php'>Add post</a>";
             echo '<a href="logout.php">Log out</a>';

@@ -10,7 +10,7 @@ $userId = $_SESSION['userId'];
     <div class="top-right home">
         <a href='view.php'>All Posts</a>
         <a href="logout.php">Logout</a>
-        <a href="register.php">Register</a>
+        <a href="index.php">Register</a>
     </div>
     <div class="content">
         <div class="m-b-md">
