@@ -2,8 +2,6 @@
 include 'header.php';
 $postId = $_POST["postId"];
 if (isset($_POST['submit'])) {
-    $name = $_POST['name'];
-    $userId = $_POST['userId'];
     $content = $_POST["content"];
 
     $sql = "INSERT comments(user_id, post_id ,content) VALUES ('$userId', '$postId', '$content')";

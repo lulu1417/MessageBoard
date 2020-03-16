@@ -1,8 +1,6 @@
 <title>All Replies</title>
 <?php
 include 'header.php';
-$name = $_SESSION['name'];
-$userId = $_SESSION['userId'];
 $commentId = $_GET['commentId'];
 $postId = $_GET['postId'];
 ?>
@@ -14,7 +12,7 @@ $postId = $_GET['postId'];
             echo '<a href="index.php">Log in</a>';
         } else {
             echo "<a href='view.php'>All POST</a>";
-            echo '<a href="index.php">Log out</a>';
+            echo '<a href="logout.php">Log out</a>';
         } ?>
     </div>
 

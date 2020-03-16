@@ -3,14 +3,13 @@
 include 'header.php';
 $name = $_SESSION['name'];
 $userId = $_SESSION['userId'];
-
 ?>
 
 <body>
 <div class="flex-center position-ref full-height">
     <div class="top-right home">
         <a href='view.php'>All Posts</a>
-        <a href="index.php">Logout</a>
+        <a href="logout.php">Logout</a>
         <a href="register.php">Register</a>
     </div>
     <div class="content">

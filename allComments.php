@@ -1,8 +1,6 @@
 <title>All Comments</title>
 <?php
 include 'header.php';
-$name = $_SESSION['name'];
-$userId = $_SESSION['userId'];
 $postId = $_GET['postId'];
 ?>
 <body>
@@ -13,7 +11,7 @@ $postId = $_GET['postId'];
             echo '<a href="index.php">Log in</a>';
         } else {
             echo "<a href='view.php'>All post</a>";
-            echo '<a href="index.php">Log out</a>';
+            echo '<a href="logout.php">Log out</a>';
         } ?>
     </div>
 
@@ -40,8 +38,6 @@ FROM users
          <form name="form1" action="addReply.php" method="post">
                 <input type="hidden" name="commentId" value= ' . $commentId . ' >
                 <input type="hidden" name="postId" value= ' . $postId . ' >
-                     <input type="hidden" name="name" value= ' . $name . '>
-                <input type="hidden" name="userId" value= ' . $userId . '>
                 <p><textarea style="font-family: \'Nunito\', sans-serif; font-size:20px; width:550px;height:100px;" name="content"></textarea></p>
                 <p><input type="submit" name="submit" value="REPLY">
                     <style>

@@ -10,7 +10,7 @@ include 'header.php';
             echo '<a href="index.php">Log in</a>';
         } else {
             echo "<a href='view.php'>All Posts</a>";
-            echo '<a href="index.php">Log out</a>';
+            echo '<a href="logout.php">Log out</a>';
         } ?>
     </div>
 
@@ -20,8 +20,6 @@ include 'header.php';
 <?php
 if (isset($_POST['submit'])) {
     $postId = $_POST["postId"];
-    $name = $_SESSION['name'];
-    $userId = $_SESSION['userId'];
 
     echo '<div class="success">Who also liked the post : </div>';
 

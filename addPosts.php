@@ -1,9 +1,6 @@
 <?php
 include 'header.php';
 if (isset($_POST['submit'])) {
-//    echo '<div class="success">Added successfully ！</div>';
-    $name = $_POST['name'];
-    $userId = $_POST['userId'];
     $subject = $_POST["subject"];
     $content = $_POST["content"];
     $sql = "INSERT posts(user_id, subject ,content) VALUES ('$userId', '$subject', '$content')";

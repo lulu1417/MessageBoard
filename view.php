@@ -12,7 +12,7 @@ $userId = $_SESSION['userId'];
             echo '<a href="index.php">Log in</a>';
         } else {
             echo "<a href='board.php'>Add post</a>";
-            echo '<a href="index.php">Log out</a>';
+            echo '<a href="logout.php">Log out</a>';
         } ?>
     </div>
 
@@ -41,8 +41,6 @@ FROM users
         </form>
          <form name="form1" action="addComment.php" method="post">
                 <input type="hidden" name="postId" value= ' . $postId . ' >
-                     <input type="hidden" name="name" value= ' . $name . '>
-                <input type="hidden" name="userId" value= ' . $userId . '>
                 <p><textarea style="font-family: \'Nunito\', sans-serif; font-size:20px; width:550px;height:100px;" name="content"></textarea></p>
                 <p><input type="submit" name="submit" value="SEND">
                     <style>

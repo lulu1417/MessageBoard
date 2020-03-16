@@ -3,9 +3,6 @@ include 'header.php';
 $commentId = $_POST["commentId"];
 $postId = $_POST['postId'];
 if (isset($_POST['submit'])) {
-
-    $name = $_POST['name'];
-    $userId = $_POST['userId'];
     $content = $_POST["content"];
 
     $sql = "INSERT replies(user_id, comment_id ,content) VALUES ('$userId', '$commentId', '$content')";
