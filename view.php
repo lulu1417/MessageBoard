@@ -35,7 +35,27 @@ FROM users
         <form name="form1" action="like.php" method="post">
         <input type="hidden" name="postId" value= ' . $postId . ' >
         <input type="submit" name="submit" value= "Like 👍" >
-        </form>
+        </form>';
+
+        //comments
+        $sql = "SELECT comments.id as comment_id, users.*, comments.*
+FROM users
+    LEFT JOIN comments
+         ON comments.user_id = users.id 
+   WHERE comments.post_id = '$postId'
+   LIMIT 3";
+        echo "<br><strong>Comments：</strong>";
+        $results = mysqli_query($db, $sql);
+        while ($rows = mysqli_fetch_assoc($results)) {
+            echo "<br>Visitor Name：" . $rows['name'] . "
+        <br>Content：" . nl2br($rows['content']) . "<br>";
+            $commentId = $_SESSION['commentId'] = $rows['comment_id'];
+        }
+        //
+
+        echo '<hr><a href="allComments.php?postId=' . $postId . '">All Comments</a><br>';
+        echo "<br><strong>Add Comment Here</strong>";
+        echo '
         <form name="form1" action="comment.php" method="post">
 
         </form>
@@ -62,7 +82,6 @@ FROM users
                         }
                     </style>
             </form>
-        <a href="allComments.php?postId=' . $postId.'">All Comments</a><br>
         ';
 
         echo "Time：" . $row['time'] . "<br>";

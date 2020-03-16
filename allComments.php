@@ -34,6 +34,28 @@ FROM users
         echo "<br>Content：" . nl2br($row['content']) . "<br>";
         echo "Time：" . $row['time'] . "<br>";
         $commentId = $_SESSION['commentId'] = $row['comment_id'];
+
+        //replies
+        echo "<br><strong>Replies：</strong>";
+        $sql = "SELECT replies.id as reply_id, users.*, replies.*
+FROM users
+    LEFT JOIN replies
+         ON replies.user_id = users.id 
+   WHERE replies.comment_id = '$commentId' 
+   LIMIT 3";
+
+
+        $results = mysqli_query($db, $sql);
+
+        while ($rows = mysqli_fetch_assoc($results)) {
+            echo "<br>Visitor Name：" . $rows['name'];
+            echo "<br>Content：" . nl2br($rows['content']) . "<br>";
+        }
+        echo ' <a href="allReplies.php?commentId=' . $commentId.'&postId='.$postId.'">All Replies</a><br>';
+
+        //
+
+
         echo '
          <form name="form1" action="addReply.php" method="post">
                 <input type="hidden" name="commentId" value= ' . $commentId . ' >
@@ -59,7 +81,6 @@ FROM users
                         }
                     </style>
             </form>
-        <a href="allReplies.php?commentId=' . $commentId.'&postId='.$postId.'">All Replies</a><br>
         ';
         echo "<hr>";
 
