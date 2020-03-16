@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
         echo "
 
                 <script>
-                 setTimeout(function(){window.location.href='allReplies.php?commentId=" . $commentId. ".&postId=".$postId.";'},300);
+                 setTimeout(function(){window.location.href='allReplies.php?commentId=" . $commentId. "&postId=".$postId.";'},10);
                 </script>";
 
     }

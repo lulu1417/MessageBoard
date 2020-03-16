@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) {
                 echo '<div class="success">Sign up successfully ！</div>';
                 echo "
                     <script>
-                    setTimeout(function(){window.location.href='view.php';},2000);
+                    setTimeout(function(){window.location.href='view.php';},20);
                     </script>";
             }
         } else {
@@ -77,7 +77,7 @@ if (isset($_POST['submit'])) {
             echo '<div class="warning">The Username has already been used ！</div>';
             echo "
                 <script>
-                setTimeout(function(){window.location.href='register.php';},1000);
+                setTimeout(function(){window.location.href='register.php';},10);
                 </script>";
         }
     } else {

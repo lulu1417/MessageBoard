@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     } else {
         echo "
                 <script>
-                 setTimeout(function(){window.location.href='view.php';},800);
+                 setTimeout(function(){window.location.href='view.php';},10);
                 </script>";
 
     }

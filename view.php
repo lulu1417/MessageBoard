@@ -34,7 +34,7 @@ FROM users
         echo '
         <form name="form1" action="like.php" method="post">
         <input type="hidden" name="postId" value= ' . $postId . ' >
-        <input type="submit" name="submit" value= 👍 >
+        <input type="submit" name="submit" value= "Like 👍" >
         </form>
         <form name="form1" action="comment.php" method="post">
 

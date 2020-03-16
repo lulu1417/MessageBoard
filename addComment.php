@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     } else {
         echo "
                 <script>
-                 setTimeout(function(){window.location.href='allComments.php?postId=" . $postId. "';},300);
+                 setTimeout(function(){window.location.href='allComments.php?postId=" . $postId. "';},10);
                 </script>";
 
     }
