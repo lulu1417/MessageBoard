@@ -11,7 +11,6 @@ if (isset($_POST['submit'])) {
                 <script>
                  setTimeout(function(){window.location.href='allComments.php?postId=" . $postId. "';},10);
                 </script>";
-
     }
 } else {
     echo '<div class="success">Click <strong>Send</strong> when you\'re done.</div>';
