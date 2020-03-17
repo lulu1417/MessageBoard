@@ -13,7 +13,7 @@ include 'header.php';
             <form name="signup" action="index.php" method="post">
                 <p>Username : <input type=text name="name"></p>
                 <p>Password : <input type=password name="password"></p>
-                <p><input type="submit" name="submit" value="Sign up">
+                <p><input type="submit" name="submit" value="Sign uasp">
                     <style>
                         input {
                             padding: 5px 15px;
@@ -76,7 +76,7 @@ if (isset($_POST['submit'])) {
             echo '<div class="warning">The Username has already been used ！</div>';
             echo "
                 <script>
-                setTimeout(function(){window.location.href=index.php500);
+                setTimeout(function(){window.location.href=index.php;},500);
                 </script>";
         }
     } else {
@@ -84,7 +84,7 @@ if (isset($_POST['submit'])) {
         echo '<div class="warning">Incompleted form！ </div>';
         echo "
 <script>
-setTimeout(function(){window.location.href=login.php;},2000);
+c
 </script>";
     }
 }

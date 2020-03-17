@@ -15,8 +15,6 @@ $userId = $_SESSION['userId'];
     <div class="content">
         <div class="m-b-md">
             <form name="form1" action="addPosts.php" method="post">
-                <input type="hidden" name="name" value="<?=$name?>">
-                <input type="hidden" name="userId" value="<?=$userId?>">
                 <p><strong><?="Hi, " . $name?></strong>  ʕ•ᴥ•ʔ</p>
                 <p>SUBJECT</p>
                 <p><input type="text" name="subject"></p>
