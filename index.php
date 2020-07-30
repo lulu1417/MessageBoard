@@ -46,7 +46,7 @@ include 'header.php';
 
 if (isset($_POST['submit'])) {
     $name = $_SESSION['name'] = $_REQUEST['name'];
-    $password = $_REQUEST['password'];
+    $password = md5($_REQUEST['password']);
     if ($name && $password) {
         $sql = "select * from users where name = '$name'";
         $result = mysqli_query($db, $sql);
@@ -54,6 +54,7 @@ if (isset($_POST['submit'])) {
 
         if (!$rows) {
             $sql = "INSERT users(id,name,password) values (null,'$name','$password')";
+            var_dump($sql);
             $result = mysqli_query($db, $sql);
             $sql = "select * from users where name = '$name'";
             $result = mysqli_query($db, $sql);
@@ -68,7 +69,7 @@ if (isset($_POST['submit'])) {
                 echo '<div class="success">Sign up successfully ！</div>';
                 echo "
                     <script>
-                    setTimeout(function(){window.location.href='view.php';},200);
+                    setTimeout(function(){window.location.href='view.php';},100000);
                     </script>";
             }
         } else {

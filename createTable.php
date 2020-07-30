@@ -4,7 +4,7 @@ $sqls = [
     'users' => "create table users(
         id integer auto_increment primary key,
         name char(20) NOT NULL ,
-        password char(20) NOT NULL ,
+        password char(100) NOT NULL ,
         time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
     ",

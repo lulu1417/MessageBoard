@@ -12,8 +12,8 @@ include 'header.php';
     <div class="content">
         <div class="m-b-md">
             <form name="login" action="login.php" method="post">
-                <p>Username : <input type=text name="name" ></p>
-                <p>Password : <input type=password name="password" ></p>
+                <p>Username : <input type=text name="name"></p>
+                <p>Password : <input type=password name="password"></p>
                 <p><input type="submit" name="submit" value="Log in">
                     <style>
                         input {
@@ -48,16 +48,17 @@ if (isset($_POST['submit'])) {
     $name = $_SESSION['name'] = $_POST['name'];
     $password = $_POST['password'];
     if (!empty($name) && !empty($password)) {
-        $sql = "select * from users where name = '$name' and password='$password'";
+        $sql = "select * from users where name = '$name' and password= '$password'";
+        var_dump($sql);
         $result = mysqli_query($db, $sql);
         $rows = mysqli_num_rows($result);
         $result = mysqli_fetch_array($result);
         if ($rows) {
             $userId = $_SESSION['userId'] = $result['id'];
-            echo '<div class="sucess">welcome！ </div>';
+            echo '<div class="sucess">Welcome！ </div>';
             echo "
             <script>
-             setTimeout(function(){window.location.href='view.php';},1000);
+             setTimeout(function(){window.location.href='view.php';},100000);
             </script>";
             exit;
         } else {
