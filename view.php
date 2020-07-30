@@ -8,7 +8,7 @@ $userId = $_SESSION['userId'];
 <div class="flex-center position-ref full-height">
     <div class="top-right home">
         <?php
-        if (!$_SESSION['name']) {
+        if (!$_SESSION['name'] && !$_SESSION['userId']) {
             echo '<a href="login.php">Log in</a>';
         } else {
             echo "<a href='board.php'>Add post</a>";

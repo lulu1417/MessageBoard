@@ -45,8 +45,8 @@ include 'header.php';
 <?php
 
 if (isset($_POST['submit'])) {
-    $name = $_SESSION['name'] = $_POST['name'];
-    $password = $_POST['password'];
+    $name = $_SESSION['name'] = $_REQUEST['name'];
+    $password = $_REQUEST['password'];
     if ($name && $password) {
         $sql = "select * from users where name = '$name'";
         $result = mysqli_query($db, $sql);

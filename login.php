@@ -47,14 +47,13 @@ include 'header.php';
 if (isset($_POST['submit'])) {
     $name = $_SESSION['name'] = $_POST['name'];
     $password = $_POST['password'];
-    if ($name && $password) {
+    if (!empty($name) && !empty($password)) {
         $sql = "select * from users where name = '$name' and password='$password'";
         $result = mysqli_query($db, $sql);
         $rows = mysqli_num_rows($result);
         $result = mysqli_fetch_array($result);
-        $userId = $_SESSION['userId'] = $result['id'];
-
         if ($rows) {
+            $userId = $_SESSION['userId'] = $result['id'];
             echo '<div class="sucess">welcome！ </div>';
             echo "
             <script>
