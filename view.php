@@ -1,14 +1,12 @@
 <title>All messages</title>
 <?php
-include 'header.php';
-$name = $_SESSION['name'];
-$userId = $_SESSION['userId'];
+require 'header.php';
 ?>
 <body>
 <div class="flex-center position-ref full-height">
     <div class="top-right home">
         <?php
-        if (!$_SESSION['name'] && !$_SESSION['userId']) {
+        if (!isset($_SESSION['name']) && !isset($_SESSION['userId'])) {
             echo '<a href="login.php">Log in</a>';
         } else {
             echo "<a href='board.php'>Add post</a>";

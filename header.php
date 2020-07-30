@@ -1,9 +1,8 @@
 <?php
 include 'style.css';
 include 'db.php';
-if(session_id() == ''){
-    session_start();
-}else{
+session_start();
+if (!empty($_SESSION['name']) && !empty($_SESSION['userId'])) {
     $name = $_SESSION['name'];
     $userId = $_SESSION['userId'];
 }

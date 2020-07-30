@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
+var_dump($userId);
 if (isset($_POST['submit'])) {
-
     $subject = $_POST["subject"];
     $content = $_POST["content"];
     $sql = "INSERT posts(user_id, subject ,content) VALUES ('$userId', '$subject', '$content')";
